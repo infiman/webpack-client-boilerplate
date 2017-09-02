@@ -17,19 +17,23 @@ module.exports = {
         'babel-loader',
         'eslint-loader',
       ],
-      exclude: /(node_modules|build|public)/,
+      exclude: /(node_modules)/,
     }, {
       test: /\.(css|scss)$/,
       use: [
         'style-loader',
-        'css-loader?importLoaders=1',
-        'postcss-loader',
+        'css-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            includePaths: ['./node_modules'],
+          },
+        },
       ],
       exclude: /(node_modules|build|public)/,
     }, {
       test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
       use: 'file-loader',
-      exclude: /(node_modules|build|public)/,
     }],
   },
   plugins: [
