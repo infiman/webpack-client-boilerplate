@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './index.scss';
+import Footer from './footer';
 
 class App extends React.PureComponent {
   render() {
@@ -8,6 +9,7 @@ class App extends React.PureComponent {
       <section className="app">
         <span className="app-text">
           I can reload React code! Yey!
+          <Footer />
         </span>
       </section>
     );

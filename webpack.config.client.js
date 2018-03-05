@@ -15,7 +15,7 @@ module.exports = {
       test: /\.(js|jsx)$/,
       use: [
         'babel-loader',
-        'eslint-loader',
+        // 'eslint-loader',
       ],
       exclude: /(node_modules)/,
     }, {
@@ -34,7 +34,10 @@ module.exports = {
     }, {
       test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
       use: 'file-loader',
-    }],
+    },{
+      test: /\.css$/,
+      use: 'css-loader/locals'
+    },],
   },
   plugins: [
     new HtmlWebpackPlugin({
