@@ -1,17 +1,27 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
 import './index.scss';
-import Footer from './footer';
+import Header from './Header';
+import Container from './MainContainer';
+import Footer from './Footer';
+import store from '../reducers';
+
+console.log(store.getState());
 
 class App extends React.PureComponent {
   render() {
     return (
-      <section className="app">
-        <span className="app-text">
-          I can reload React code! Yey!
-          <Footer />
-        </span>
-      </section>
+      <Provider store={store}>
+        <section className="app">
+          <span className="app-text">
+            I can reload React code! Yey!
+            <Header />
+            <Container />
+            <Footer />
+          </span>
+        </section>
+      </Provider>
     );
   }
 }
