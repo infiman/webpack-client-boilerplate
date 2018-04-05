@@ -12,7 +12,10 @@ class Container extends React.Component {
     return (
       <div className="mainContainer">
         <span className="typeField">{ JSON.stringify(this.props.types) }</span>
+        {this.props.search.length > 0 &&
         <span className="searchField">{ JSON.stringify(this.props.search) }</span>
+        }
+        <span className="searchField">{ JSON.stringify(this.props.name) }</span>
       </div>
     );
   }
@@ -20,17 +23,20 @@ class Container extends React.Component {
 
 Container.defaultProps = {
   types: [],
-  search: '',
+  search: [],
+  name: '',
 };
 
 Container.propTypes = {
   types: PropTypes.array, // eslint-disable-line react/forbid-prop-types
   search: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  name: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   types: state.types.results,
   search: state.search.results,
+  name: state.search.name,
 });
 
 export default connect(mapStateToProps, { fetchTypes, searchData })(Container);

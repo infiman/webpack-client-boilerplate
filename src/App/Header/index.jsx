@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
 
 import { searchData } from '../../reducers/search';
 
@@ -22,7 +21,6 @@ class Header extends React.Component {
   handleSubmit(event) {
     // eslint-disable-next-line
     this.props.searchData(this.state.value); 
-    console.log(this.state.value);
     event.preventDefault();
   }
 
