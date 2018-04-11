@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Button from './button';
 import { fetchTypes } from '../../reducers/types';
 import { searchData } from '../../reducers/search';
 
@@ -12,6 +13,8 @@ class Footer extends React.Component {
     super(...args);
 
     this.getTypes = this.getTypes.bind(this);
+    // this.onClick = this.onClick.bind(this);
+    // abishek
   }
 
   componentDidMount() {
@@ -21,12 +24,11 @@ class Footer extends React.Component {
   getTypes(types) {
     return types.map(
       type => (
-        <button
-          onClick={() => this.props.searchData(`type/${type.name}`)}
+        <Button
           key={type.name}
-        >
-          {type.name}
-        </button>),
+          name={type.name}
+          onClick={() => this.props.searchData(`type/${type.name}`)}
+        />),
     );
   }
 
@@ -53,4 +55,4 @@ const mapStateToProps = state => ({
   types: state.types.results,
 });
 
-export default connect(mapStateToProps, { searchData, fetchTypes })(Footer);
+export default connect(mapStateToProps, { searchData, fetchTypes })(Footer, Button);
