@@ -26,3 +26,29 @@ export default function search(state = initialState, action) {
       return state;
   }
 }
+
+// export default function entities(state = initialState, { type, payload }) {
+//   case GOOD:
+//     return {
+//       ...state,
+//       [payload.url]: payload
+//     }
+//   default:
+//     return state
+// }
+
+
+// {
+//   '1': {
+//     name,
+//     title,
+//     expiery_at: 
+//     ...
+//   },
+//   '2': {
+//     name,
+//     title,
+//     ...
+//   },
+//   ...
+// }
