@@ -1,7 +1,7 @@
 const SEARCH_FAIL = 'SEARCH_FAIL';
 const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 
-const initialState = { count: 0, previous: null, results: [] };
+// const initialState = { count: 0, previous: null, results: [] };
 
 export function searchData(value) {
   const searchString = value.toLowerCase();
@@ -18,7 +18,7 @@ export function searchData(value) {
   };
 }
 
-export default function search(state = initialState, action) {
+export default function search(state = {}, action) {
   switch (action.type) {
     case SEARCH_SUCCESS:
       return action.payload;
@@ -42,7 +42,7 @@ export default function search(state = initialState, action) {
 //   '1': {
 //     name,
 //     title,
-//     expiery_at: 
+//     expiery_at:
 //     ...
 //   },
 //   '2': {

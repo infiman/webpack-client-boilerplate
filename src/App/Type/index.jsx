@@ -1,46 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import List from 'grommet/components/List';
+import ListItem from 'grommet/components/ListItem';
+import { Link } from 'react-router-dom';
 
 import './index.scss';
 import { searchData } from '../../reducers/search';
 
 class Type extends React.Component {
   componentDidMount() {
-    const type = location.pathname;
+    const type = this.props.match.url;
     this.props.searchData(type.slice(1));
-    console.log(this.props);
   }
 
   render() {
     return (
       <div>
         <span>You are now at {location.pathname}</span>
-        <div>Type name: {this.props.name}</div>
-        <div>Generation name: {this.props.generationName}</div>
+        <List>
+          {this.props.data.map(item => (
+            Object.values(item).map(url => (
+              <ListItem
+                key={url}
+                justify="between"
+                separator="horizontal"
+              >
+                {url}
+              </ListItem>
+            ),
+            )),
+          )}
+          <Link
+            to={'/'}
+          >
+            Home
+          </Link>
+        </List>
       </div>
     );
   }
 }
 
-
 Type.defaultProps = {
-  name: '',
-  generationName: '',
+  match: {},
+  url: '',
+  data: [],
 };
 
 Type.propTypes = {
-  name: PropTypes.string,
-  generationName: PropTypes.string,
-
+  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  url: PropTypes.string,
+  data: PropTypes.array, // eslint-disable-line react/forbid-prop-types
   searchData: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired, //eslint-disable-line
 };
 
 const mapStateToProps = state => ({
   types: state.types.results,
-  name: state.search.name,
-  generationName: state.search.generation.name,
+  data: state.search.results,
 });
 
 export default connect(mapStateToProps, { searchData })(Type);
