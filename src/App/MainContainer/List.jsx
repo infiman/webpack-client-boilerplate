@@ -8,16 +8,16 @@ const ListContainer = ({ data }) => (
   <div>
     {Object.keys(data).length > 0 &&
       <List>
-        {Object.entries(data).map(arr => (
+        {Object.keys(data).map(key => (
           <ListItem
-            key={arr[0]}
+            key={key}
             justify="between"
             separator="horizontal"
           >
             <Link
-              to={`${arr[0]}`}
+              to={`${key}`}
             >
-              {arr[0]}
+              {key}
             </Link>
           </ListItem>
         ))

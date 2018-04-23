@@ -20,16 +20,18 @@ class Type extends React.Component {
         <span>You are now at {location.pathname}</span>
         <List>
           {this.props.data.map(item => (
-            Object.values(item).map(url => (
-              <ListItem
-                key={url}
-                justify="between"
-                separator="horizontal"
+            <ListItem
+              key={item.name}
+              justify="between"
+              separator="horizontal"
+            >
+              <Link
+                to={`${this.props.match.url}/${item.name}`}
               >
-                {url}
-              </ListItem>
-            ),
-            )),
+                {item.name}
+              </Link>
+            </ListItem>
+          ),
           )}
           <Link
             to={'/'}

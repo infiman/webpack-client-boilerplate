@@ -14,6 +14,7 @@ import Footer from '../Footer/index';
 import store from '../../reducers/index';
 import GoTo from '../GoTo/index';
 import Type from '../Type/index';
+import Entity from '../Entity/index';
 
 class LandingContainer extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class LandingContainer extends React.Component {
               <Switch>
                 <Route exact path="/" component={Container} />
                 <Route path="/search/:type" component={GoTo} />
+                <Route path="/:type/:entity" component={Entity} />
                 <Route path="/:type" component={Type} />
                 <Redirect from="*" to="/" />
               </Switch>
