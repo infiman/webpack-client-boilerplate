@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
+import Spinning from 'grommet/components/icons/Spinning';
 import { Link } from 'react-router-dom';
 
 import './index.scss';
@@ -17,8 +18,8 @@ class Entity extends React.Component {
   render() {
     return (
       <div>
-        {this.props.entity && this.props.entity.forms &&
-          <List>
+        {this.props.entity && this.props.entity.forms ?
+          (<List>
             {this.props.entity.forms.map(item => (
               <ListItem
                 key={item.name}
@@ -27,8 +28,11 @@ class Entity extends React.Component {
               </ListItem>
             ),
             )}
-          </List>
+          </List>) : (<Spinning size="huge" />)
         }
+        <div>
+          {JSON.stringify(this.props.entity)}
+        </div>
         <div>
           <Link
             to={'/'}

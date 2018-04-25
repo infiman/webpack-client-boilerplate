@@ -8,7 +8,7 @@ export function fetchTypesSuccess(payload) {
 
 export function fetchTypes() {
   return dispatch =>
-    fetch('https://pokeapi.co/api/v2/type')
+    fetch('https://pokeapi.co/api/v2/type/')
       .then(response => response.json())
       .then(data => dispatch(fetchTypesSuccess(data)));
 }
